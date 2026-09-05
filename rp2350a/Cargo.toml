@@ -1,0 +1,29 @@
+[package]
+edition = "2024"
+name = "Pico-2W"
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+
+publish = false
+
+[dependencies]
+embassy-executor = { version = "0.10.0", features = ["defmt", "platform-cortex-m", "executor-thread"] }
+embassy-rp       = { version = "0.10.0", features = ["defmt", "rp235xa", "binary-info", "time-driver", "critical-section-impl"] }
+embassy-time     = { version = "0.5.1", features = ["defmt"] }
+defmt            = "1.0.1"
+defmt-rtt        = "1.0.0"
+panic-probe      = { version = "1.0.0", features = ["print-defmt"] }
+cortex-m-rt = "0.7.0"
+cortex-m = { version = "0.7.6", features = ["inline-asm"] }
+cyw43            = { version = "0.7.0", features = ["defmt", "firmware-logs"] }
+cyw43-pio        = { version = "0.10.0", features = ["defmt"] }
+static_cell      = "2"
+
+[profile.release]
+# Enable generation of debug symbols even on release builds
+debug = true
+
+[package.metadata.embassy]
+build = [
+  { target = "thumbv8m.main-none-eabihf", artifact-dir = "out/examples/rp235x" }
+]

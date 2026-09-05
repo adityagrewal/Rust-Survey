@@ -1,0 +1,36 @@
+[package]
+name = "lpc845-brk-rev-A"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "led"
+path = "./src/bin/led.rs"
+
+[[bin]]
+name = "switch"
+path = "./src/bin/switch.rs"
+
+[[bin]]
+name = "uart"
+path = "./src/bin/uart.rs"
+
+[[bin]]
+name = "adc"
+path = "./src/bin/adc.rs"
+
+[[bin]]
+name = "dac"
+path = "./src/bin/dac.rs"
+
+[[bin]]
+name = "pwm"
+path = "./src/bin/pwm.rs"
+
+[dependencies]
+lpc8xx-hal = { version = "0.10", features = ["845-rt"] }
+cortex-m = "0.7"
+cortex-m-rt = "0.7"
+panic-halt = "0.2"
+nb = "1"
+embedded-hal = "0.2"        # lpc8xx-hal implements the 0.2 generation of embedded-hal traits
